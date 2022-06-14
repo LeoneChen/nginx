@@ -1,0 +1,7 @@
+*.o
+*.err
+objs/
+Makefile
+install
+build
+enclave.signed.so

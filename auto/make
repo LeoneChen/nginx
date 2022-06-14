@@ -24,7 +24,7 @@ CC =	$CC
 CFLAGS = $CFLAGS
 CPP =	$CPP
 LINK =	$LINK
-
+SGXSanPath := \$(abspath ../../../../linux-sgx/SGXSan)
 END
 
 
