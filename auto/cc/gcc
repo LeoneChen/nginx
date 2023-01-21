@@ -146,7 +146,7 @@ fi
 # -W requires at least -O
 CFLAGS="$CFLAGS ${NGX_GCC_OPT:--O} -W"
 
-CFLAGS="$CFLAGS -Wall -Wpointer-arith"
+CFLAGS="$CFLAGS -Wall -Wpointer-arith -Wno-implicit-fallthrough -Wno-cast-function-type"
 #CFLAGS="$CFLAGS -Wconversion"
 #CFLAGS="$CFLAGS -Winline"
 #CFLAGS="$CFLAGS -Wmissing-prototypes"

@@ -1,0 +1,10 @@
+*.o
+*.err
+objs/ngx_auto_headers.h
+objs/ngx_auto_config.h
+objs/ngx_modules.c
+objs/nginx
+objs/nginx.8
+Makefile
+install
+enclave.signed.so
