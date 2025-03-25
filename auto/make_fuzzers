@@ -1,0 +1,23 @@
+if [ -z ${PB_DIR} ]; then
+  echo "[!] PB_DIR is not set"
+  exit 1
+fi
+
+if [ -z ${LPM_DIR} ]; then
+  echo "[!] LPM_DIR is not set"
+  exit 1
+fi
+
+mkdir -p $NGX_OBJS/src/fuzz
+
+cat << END                                                    >> $NGX_MAKEFILE
+
+fuzzers: $NGX_OBJS/http_request_fuzzer
+
+$NGX_OBJS/src/fuzz/wrappers.o:
+	\$(CC) $ngx_compile_opt \$(CFLAGS) -o \$@ src/fuzz/wrappers.c
+
+$NGX_OBJS/http_request_fuzzer: $NGX_OBJS/src/fuzz/wrappers.o$ngx_long_cont$ngx_deps
+	\$(CXX) \$(CXXFLAGS) -o \$@ src/fuzz/http_request_fuzzer.cc src/fuzz/genfiles/http_request_proto.pb.cc \$(CORE_INCS) \$(HTTP_INCS) -I src/fuzz/genfiles/ -I ${LPM_DIR}/include/ -I ${LPM_DIR}/include/libprotobuf-mutator/ -I ${PB_DIR}/include/ ${LPM_DIR}/lib/libprotobuf-mutator-libfuzzer.a ${LPM_DIR}/lib/libprotobuf-mutator.a -Wl,--start-group ${PB_DIR}/lib/lib*.a -Wl,--end-group $ngx_long_cont$NGX_OBJS/src/fuzz/wrappers.o$ngx_long_cont$ngx_objs$ngx_libs$ngx_link$ngx_main_link
+
+END

@@ -194,7 +194,7 @@ static char **ngx_os_environ;
 
 
 int ngx_cdecl
-main(int argc, char *const *argv)
+fuzz_without_main(int argc, char *const *argv)
 {
     ngx_buf_t        *b;
     ngx_log_t        *log;

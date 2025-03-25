@@ -1,0 +1,6 @@
+*.o
+Makefile
+autoconf.err
+nginx*
+ngx_*
+http_request_fuzzer
