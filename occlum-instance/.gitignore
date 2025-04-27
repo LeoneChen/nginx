@@ -1,0 +1,8 @@
+initfs
+image
+build
+run
+.sgx_mode
+.__occlum_status
+bom.yaml
+Occlum.json

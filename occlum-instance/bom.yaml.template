@@ -1,0 +1,13 @@
+includes:
+  - base.yaml
+targets:
+  - target: /
+    copy:
+      - dirs:
+        - ${INSTALL_DIR}/
+  - target: /etc/
+    copy:
+      - from: /etc/
+        files:
+        - group
+        - passwd

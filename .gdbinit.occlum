@@ -1,0 +1,4 @@
+define hook-run
+    echo Run command triggered!\n
+    handle SIGILL nostop
+end

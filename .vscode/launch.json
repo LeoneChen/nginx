@@ -1,0 +1,44 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "occlum-run nginx",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/opt/occlum/build/bin/occlum-run",
+            "args": [
+                "/sbin/nginx",
+                "-p",
+                "/"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/occlum-instance",
+            "environment": [
+                {
+                    "name": "LD_LIBRARY_PATH",
+                    "value": "build/lib"
+                }
+            ],
+            "externalConsole": false,
+            "miDebuggerPath": "${workspaceFolder}/occlum-gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                },
+                {
+                    "text": "-gdb-set substitute-path /rustc/5c8bff74bc1c52bef0c79f3689bb227f51f3e82d/library/ /home/leone/.rustup/toolchains/nightly-2022-10-22-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/",
+                },
+            ]
+        },
+    ]
+}
